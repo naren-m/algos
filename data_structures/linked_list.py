@@ -1,3 +1,11 @@
+"""
+    A linked list is a linear collection of data elements, called nodes, each
+    pointing to the next node by means of a pointer. It is a data structure
+    consisting of a group of nodes which together represent a sequence.
+
+    wiki: https://en.wikipedia.org/wiki/Linked_list
+
+"""
 class Node:
     def __init__(self, data=None, next=None):
         self.data = data
@@ -26,6 +34,11 @@ class LinkedList:
         self.size = 0
 
     def add(self, data):
+        """
+            Adds node to the end of linked list
+
+            Time Complexity: O(N)
+        """
         new_node = Node(data, None)
         if self.head == None:
             self.head = new_node
@@ -38,6 +51,11 @@ class LinkedList:
         self.size = self.size + 1
 
     def delete(self, data):
+        """
+            Deletes a node from linked list
+
+            Time Complexity: O(N)
+        """
         current_node = self.head
 
         while current_node != None:
@@ -60,6 +78,11 @@ class LinkedList:
         print "[None]"
 
     def search(self, data):
+        """
+            Search for an element in linked list
+
+            Time Complexity: O(N)
+        """
         current_node = self.head
         while current_node != None:
             if data == current_node.data:
