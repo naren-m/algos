@@ -36,7 +36,6 @@ class LinkedList:
     def add(self, data):
         """
             Adds node to the end of linked list
-
             Time Complexity: O(N)
         """
         new_node = Node(data, None)
@@ -53,7 +52,6 @@ class LinkedList:
     def delete(self, data):
         """
             Deletes a node from linked list
-
             Time Complexity: O(N)
         """
         current_node = self.head
@@ -80,7 +78,6 @@ class LinkedList:
     def search(self, data):
         """
             Search for an element in linked list
-
             Time Complexity: O(N)
         """
         current_node = self.head
