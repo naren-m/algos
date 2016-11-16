@@ -1,4 +1,6 @@
-***Data Structures and Algorithms ***
+Data Structures and Algorithms
+-----------------------------
+
 **Data Structures**
 
 1. [Stack](https://github.com/naren-m/algos/blob/master/data_structures/stack.py)
