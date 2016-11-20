@@ -39,19 +39,11 @@ a = map(int, "1 2 3 4 5".strip().split(' '))
 answer = array_left_rotation(a, n, k);
 print a
 print ' '.join(map(str,answer))
-# 
-# 
-# n, k = 5, 2
-# a = map(int, "1 2 3 4 5".strip().split(' '))
-# answer = array_left_rotation(a, n, k);
-# print a
-# print ' '.join(map(str,answer))
-# 
 
 
-large_test = False
+large_test = True
 if large_test:
-    with open('timeout_input.data', 'r') as data_file:
+    with open('data/large_array.data', 'r') as data_file:
         data = data_file.read().split('\n')
     # print data
     n, k = map(int, data[0].strip().split(' '))
