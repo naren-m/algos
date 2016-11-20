@@ -1,0 +1,60 @@
+
+
+# Problem from hackerrank
+# https://www.hackerrank.com/challenges/ctci-array-left-rotation
+
+def reverse(a, start, end):
+    n = len(a)
+    while start < end:
+        tmp = a[start]
+        a[start] = a[end]
+        a[end] = tmp
+        start += 1
+        end -= 1
+    return a
+
+
+def array_left_rotation(a, n, k):
+    a = reverse(a, 0, k-1)
+    a = reverse(a, k, n-1)
+    a = reverse(a, 0, n-1)
+    return a
+
+
+"""
+Input
+5 4
+1 2 3 4 5
+"""
+
+
+
+n, k = map(int, "5 4".strip().split(' '))
+a = map(int, "1 2 3 4 5".strip().split(' '))
+answer = array_left_rotation(a, n, k);
+print ' '.join(map(str,answer))
+
+n, k = 5, 1
+a = map(int, "1 2 3 4 5".strip().split(' '))
+answer = array_left_rotation(a, n, k);
+print a
+print ' '.join(map(str,answer))
+# 
+# 
+# n, k = 5, 2
+# a = map(int, "1 2 3 4 5".strip().split(' '))
+# answer = array_left_rotation(a, n, k);
+# print a
+# print ' '.join(map(str,answer))
+# 
+
+
+large_test = False
+if large_test:
+    with open('timeout_input.data', 'r') as data_file:
+        data = data_file.read().split('\n')
+    # print data
+    n, k = map(int, data[0].strip().split(' '))
+    a = map(int, data[1].strip().split(' '))
+    answer = array_left_rotation(a, n, k);
+    print ' '.join(map(str,answer))
