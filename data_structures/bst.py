@@ -10,7 +10,7 @@
 """
 class BinarySearchTree:
     """
-	Implementation of Binary Search Tree
+        Implementation of Binary Search Tree
     """
     def __init__(self, data = None):
         self.data = data
