@@ -53,6 +53,9 @@ class LinkedList:
         """
             Deletes a node from linked list
             Time Complexity: O(N)
+            
+            FIXME: Has bug in this implementation
+            May fail if the node we are deleting is Root node
         """
         current_node = self.head
 
