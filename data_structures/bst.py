@@ -8,38 +8,44 @@
 
     Link: https://www.tutorialspoint.com/data_structures_algorithms/binary_search_tree.htm
 """
+
+
 class BinarySearchTree:
     """
         Implementation of Binary Search Tree
     """
-    def __init__(self, data = None):
+
+    def __init__(self, data=None):
         self.data = data
         self.root = self
         self.left = None
         self.right = None
-        self.parentNode = None
+        self.parent_node = None
 
-    def isEmpty(self):
-        return  self.root.data == None
+    def is_empty(self):
+        """
+            Checks if node is empty
+        """
+        return self.root.data is None
 
     def insert(self, data):
         """
             Insert element to BST
         """
-        if self.isEmpty():
+        if self.is_empty():
             self.root = BinarySearchTree(data)
             return
 
         if self.data < data:
-            if self.right == None:
+            if self.right is None:
                 self.right = BinarySearchTree(data)
-                self.right.parentNode = self
+                self.right.parent_node = self
             else:
                 self.right.insert(data)
-        else :
-            if self.left == None:
+        else:
+            if self.left is None:
                 self.left = BinarySearchTree(data)
-                self.left.parentNode = self
+                self.left.parent_node = self
 
             else:
                 self.left.insert(data)
@@ -48,46 +54,51 @@ class BinarySearchTree:
         """
             Finding element in BST
         """
-        if self.data == data :
+        if self.data == data:
             return True
         elif self.data > data:
-            if self.left == None:
+            if self.left is None:
                 return False
             else:
                 return self.left.find(data)
-        else :
-            if self.right == None:
+        else:
+            if self.right is None:
                 return False
             else:
                 return self.right.find(data)
 
-    def inOrder(self):
+    def in_order(self):
         """
-           InOrder tree traversal
+           Traverse tree in order
         """
         if self.left != None:
-            self.left.inOrder()
-        print self.data
+            self.left.in_order()
+        print(self.data)
         if self.right != None:
-            self.right.inOrder()
+            self.right.in_order()
 
-    def preOrder(self):
+    def pre_order(self):
         """
-           PreOrder tree traversal
+           Traverse tree in pre order
         """
-        print self.data
+        print(self.data)
         if self.left != None:
-            self.left.preOrder()
+            self.left.pre_order()
         if self.right != None:
-            self.right.preOrder()
+            self.right.pre_order()
 
-def _check(min, root, max):
-    if root == None:
+
+def _check(minimum, root, maximum):
+    if root is None:
         return True
-    if not min < root.data < max:
+    if not minimum < root.data < maximum:
         return False
-    return _check(min, root.left, root.data) and _check(root.data, root.right, max)
+    return _check(minimum, root.left, root.data) and _check(root.data, root.right, maximum)
 
-def checkBstValidity(root):
+
+def validate_bst(root):
+    """
+        Validate the bst
+    """
     infinity = 10**10
     return _check(-infinity, root, infinity)
