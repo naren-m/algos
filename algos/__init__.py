@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Top-level package for ds-algos."""
+"""Top-level package for algos."""
 
 __author__ = """Naren Mudivarthy"""
 __email__ = 'narenuday595@gmail.com'

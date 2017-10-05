@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-"""Unit test package for ds-algos."""
+"""Unit test package for algos."""

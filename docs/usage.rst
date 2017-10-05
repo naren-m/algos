@@ -2,7 +2,7 @@
 Usage
 =====
 
-To use ds-algos in a project::
+To use algos in a project::
 
-    import ds-algos
+    import algos
     import data_structures
