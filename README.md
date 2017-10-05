@@ -4,7 +4,7 @@ Implementations of basic algorithms and data structures. This project is for lea
 
 [comment]: [![image](https://img.shields.io/pypi/v/ds_algos.svg)](https://pypi.python.org/pypi/ds_algos)
 
-[comment]: [![image](https://img.shields.io/travis/naren-m/ds_algos.svg)](https://travis-ci.org/naren-m/ds_algos)
+[![image](https://img.shields.io/travis/naren-m/ds_algos.svg)](https://travis-ci.org/naren-m/ds_algos)
 
 [![Documentation Status](https://readthedocs.org/projects/ds_algos/badge/?version=latest)](https://ds_algos.readthedocs.io/en/latest/?badge=latest)
 
@@ -47,7 +47,7 @@ make test
 ## License
 
 - Free software: MIT license
-- Documentation: <https://ds-ds_algos.readthedocs.io>.
+- Documentation: <https://ds_algos.readthedocs.io>.
 
 ## Acknowledgement
 
