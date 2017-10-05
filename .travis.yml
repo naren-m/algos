@@ -1,14 +1,29 @@
-sudo: required
+# Config file for automatic testing at travis-ci.org
+# This file will be regenerated if you run travis_pypi_setup.py
+
 language: python
 python:
-  - "3.5"
-  - "3.6"
+  - 3.5
+  - 3.4
+  - 3.3
+  - 2.7
+  - 2.6
 
-before_install:
-- sudo apt-get -qq update
-- sudo apt-get install -qq cmake 
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install: pip install -U tox-travis
 
-install:
-  - pip3 install algos
+# command to run tests, e.g. python setup.py test
+script: tox
 
-script: make test
+# After you create the Github repo and add it to Travis, run the
+# travis_pypi_setup.py script to finish PyPI deployment setup
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: naren-m
+  password:
+    secure: PLEASE_REPLACE_ME
+  on:
+    tags: true
+    repo: naren-m/ds_algos
+    python: 2.7
