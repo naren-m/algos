@@ -2,16 +2,16 @@
 
 Implementations of basic algorithms and data structures. This project is for learning purposes.
 
-[comment]: [![image](https://img.shields.io/pypi/v/algos.svg)](https://pypi.python.org/pypi/algos)
+[comment]: [![image](https://img.shields.io/pypi/v/ds_algos.svg)](https://pypi.python.org/pypi/ds_algos)
 
-[comment]: [![image](https://img.shields.io/travis/naren-m/algos.svg)](https://travis-ci.org/naren-m/algos)
+[comment]: [![image](https://img.shields.io/travis/naren-m/ds_algos.svg)](https://travis-ci.org/naren-m/ds_algos)
 
-[![Documentation Status](https://readthedocs.org/projects/algos/badge/?version=latest)](https://algos.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/ds_algos/badge/?version=latest)](https://ds_algos.readthedocs.io/en/latest/?badge=latest)
 
 ## Installation
 
 ```shell
-pip3 install algos
+pip3 install ds_algos
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ make test
 ## TODO
 
 - [ ] Add documentations and notes.
-- [ ] Add step by step explanations of algos and ds.
+- [ ] Add step by step explanations of ds_algos and ds.
 
 ### Algorithms
 
@@ -47,7 +47,7 @@ make test
 ## License
 
 - Free software: MIT license
-- Documentation: <https://ds-algos.readthedocs.io>.
+- Documentation: <https://ds-ds_algos.readthedocs.io>.
 
 ## Acknowledgement
 

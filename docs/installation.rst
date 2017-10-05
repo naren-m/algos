@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install algos, run this command in your terminal:
+To install ds_algos, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install algos
+    $ pip install ds_algos
 
-This is the preferred method to install algos, as it will always install the most recent stable release. 
+This is the preferred method to install ds_algos, as it will always install the most recent stable release. 
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for algos can be downloaded from the `Github repo`_.
+The sources for ds_algos can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/naren-m/algos
+    $ git clone git://github.com/naren-m/ds_algos
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/naren-m/algos/tarball/master
+    $ curl  -OL https://github.com/naren-m/ds_algos/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/naren-m/algos
-.. _tarball: https://github.com/naren-m/algos/tarball/master
+.. _Github repo: https://github.com/naren-m/ds_algos
+.. _tarball: https://github.com/naren-m/ds_algos/tarball/master

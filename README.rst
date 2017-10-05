@@ -1,20 +1,20 @@
 =====
-algos
+ds_algos
 =====
 
 
-.. image:: https://img.shields.io/pypi/v/algos.svg
-        :target: https://pypi.python.org/pypi/algos
+.. image:: https://img.shields.io/pypi/v/ds_algos.svg
+        :target: https://pypi.python.org/pypi/ds_algos
 
-.. image:: https://img.shields.io/travis/naren-m/algos.svg
-        :target: https://travis-ci.org/naren-m/algos
+.. image:: https://img.shields.io/travis/naren-m/ds_algos.svg
+        :target: https://travis-ci.org/naren-m/ds_algos
 
-.. image:: https://readthedocs.org/projects/algos/badge/?version=latest
-        :target: https://ds-algos.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/ds_algos/badge/?version=latest
+        :target: https://ds-ds_algos.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/naren-m/algos/shield.svg
-     :target: https://pyup.io/repos/github/naren-m/algos/
+.. image:: https://pyup.io/repos/github/naren-m/ds_algos/shield.svg
+     :target: https://pyup.io/repos/github/naren-m/ds_algos/
      :alt: Updates
 
 
@@ -22,7 +22,7 @@ Implementations of basic algorithms and data structures
 
 
 * Free software: MIT license
-* Documentation: https://ds-algos.readthedocs.io.
+* Documentation: https://ds-ds_algos.readthedocs.io.
 
 
 Features
