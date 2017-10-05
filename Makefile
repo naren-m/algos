@@ -58,7 +58,7 @@ test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source ds_algos -m pytest
+	coverage run --source algos -m pytest
 	coverage run --source data_structures -m pytest
 	coverage report -m
 	coverage html
@@ -67,7 +67,8 @@ coverage: ## check code coverage quickly with the default Python
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/ds_algos.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ ds_algos
+	rm -f docs/data_structures.rst
+	sphinx-apidoc -o docs/ algos data_structures
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

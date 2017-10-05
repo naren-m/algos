@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install ds_algos, run this command in your terminal:
+To install algos, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install ds_algos
+    $ pip install algos
 
-This is the preferred method to install ds_algos, as it will always install the most recent stable release. 
+This is the preferred method to install algos, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.

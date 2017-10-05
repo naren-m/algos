@@ -1,5 +1,5 @@
-Welcome to ds_algos's documentation!
-======================================
+Welcome to Data structures and algorithm's documentation!
+=========================================================
 
 Contents:
 
