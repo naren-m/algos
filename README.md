@@ -47,7 +47,7 @@ make test
 ## License
 
 - Free software: MIT license
-- Documentation: <https://algos.readthedocs.io>.
+- Documentation: <https://ds-algos.readthedocs.io>.
 
 ## Acknowledgement
 

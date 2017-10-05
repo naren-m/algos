@@ -1,0 +1,30 @@
+algos package
+=============
+
+Submodules
+----------
+
+algos.algos module
+------------------
+
+.. automodule:: algos.algos
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+algos.shell_sort module
+-----------------------
+
+.. automodule:: algos.shell_sort
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: algos
+    :members:
+    :undoc-members:
+    :show-inheritance:
