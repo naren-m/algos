@@ -1,6 +1,3 @@
-import sys
-import data_structures as ds
-
 from data_structures import bst
 
 

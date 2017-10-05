@@ -1,0 +1,14 @@
+sudo: required
+language: python
+python:
+  - "3.5"
+  - "3.6"
+
+before_install:
+- sudo apt-get -qq update
+- sudo apt-get install -qq cmake 
+
+install:
+  - pip3 install algos
+
+script: make test

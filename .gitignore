@@ -3,3 +3,12 @@
 *.data
 .vscode
 *.pickle
+.cache/
+*.eggs
+*.egg-info
+dist/*
+build/*
+__pycache__/
+.tox
+.coverage
+htmlcov/

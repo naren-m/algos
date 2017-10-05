@@ -11,6 +11,7 @@
 
 """
 
+
 class Stack:
     def __init__(self):
         self.items = list()
@@ -27,7 +28,7 @@ class Stack:
         Return element to top of the stack.
         Time Complexity O(1)
         """
-        return self.items[len(self.items)-1]
+        return self.items[len(self.items) - 1]
 
     def pop(self):
         """
@@ -41,4 +42,3 @@ class Stack:
 
     def isEmpty(self):
         return self.items == []
-

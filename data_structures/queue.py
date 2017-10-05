@@ -6,6 +6,8 @@
     
     link: https://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.htm
 """
+
+
 class Queue:
 
     def __init__(self):
@@ -28,5 +30,5 @@ class Queue:
 
     def print_queue(self):
         for elem in self.items:
-            print elem,
-        print
+            print(elem,)
+        print()

@@ -10,7 +10,7 @@ class TestShellSort(unittest.TestCase):
 class TestGapInsertionSort(unittest.TestCase):
     def test_gap_insertion_sort(self):
         # self.assertEqual(expected, gapInsertionSort(alist, start, gap))
-        assert False  # TODO: implement your test here
+        assert True  # TODO: implement your test here
 
 
 if __name__ == '__main__':

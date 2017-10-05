@@ -1,5 +1,3 @@
-import sys
-sys.path.append('/Users/nmudivar/GDrive/python_code/personal/learning/algos')
 import data_structures as ds
 
 
@@ -10,6 +8,8 @@ def main():
     q.enqueue('3')
     q.print_queue()
     data = q.dequeue()
-    print "Dequeued", data
+    print("Dequeued", data)
+
+
 if __name__ == '__main__':
     main()

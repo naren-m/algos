@@ -6,26 +6,14 @@
     wiki: https://en.wikipedia.org/wiki/Linked_list
 
 """
+
+from __future__ import print_function
+
+
 class Node:
-    def __init__(self, data=None, next=None):
+    def __init__(self, data=None, nxt=None):
         self.data = data
-        self.next = next
-
-    @property
-    def data(self):
-        return self.data
-
-    @data.setter
-    def data(self, data):
-        self.data = data
-
-    @property
-    def next(self):
-        return self.next
-
-    @next.setter
-    def next(self, next):
-        self.next = next
+        self.next = nxt
 
 
 class LinkedList:
@@ -39,7 +27,7 @@ class LinkedList:
             Time Complexity: O(N)
         """
         new_node = Node(data, None)
-        if self.head == None:
+        if self.head is None:
             self.head = new_node
         else:
             current_node = self.head
@@ -53,12 +41,13 @@ class LinkedList:
         """
             Deletes a node from linked list
             Time Complexity: O(N)
-            
+
             FIXME: Has bug in this implementation
             May fail if the node we are deleting is Root node
         """
         current_node = self.head
 
+        prev = self.head
         while current_node != None:
             if current_node.data == data:
                 prev.next = current_node.next
@@ -71,12 +60,12 @@ class LinkedList:
 
     def print_list(self):
         current_node = self.head
-        print current_node.data, "(Head) -> ",
+        print(current_node.data, "(Head) -> ", end='')
         current_node = current_node.next
         while current_node != None:
-            print current_node.data , " -> ",
+            print(current_node.data, " -> ", end='')
             current_node = current_node.next
-        print "[None]"
+        print("[None]")
 
     def search(self, data):
         """
@@ -93,4 +82,3 @@ class LinkedList:
 
     def __len__(self):
         return self.size
-
