@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `algos` package."""
+"""Tests for `ds-algos` package."""
 
 import pytest
 
 
-from algos import algos
+from ds-algos import ds-algos
 
 
 @pytest.fixture

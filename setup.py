@@ -27,24 +27,24 @@ test_requirements = [
 ]
 
 setup(
-    name='algos',
+    name='ds-algos',
     version='0.1.0',
     description="Implementations of basic algorithms and data structures",
     long_description=readme + '\n\n' + history,
     author="Naren Mudivarthy",
     author_email='narenuday595@gmail.com',
-    url='https://github.com/naren-m/algos',
-    packages=find_packages(include=['algos']),
+    url='https://github.com/naren-m/ds-algos',
+    packages=find_packages(include=['ds-algos']),
     entry_points={
         'console_scripts': [
-            'algos=algos.cli:main'
+            'ds-algos=ds-algos.cli:main'
         ]
     },
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
     zip_safe=False,
-    keywords='algos',
+    keywords='ds-algos',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

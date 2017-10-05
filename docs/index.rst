@@ -1,4 +1,4 @@
-Welcome to algos's documentation!
+Welcome to ds-algos's documentation!
 ======================================
 
 Contents:
