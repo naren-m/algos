@@ -5,11 +5,8 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
-
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
 
 requirements = [
     'Click>=6.0',
@@ -30,7 +27,7 @@ setup(
     name='ds_algos',
     version='0.1.0',
     description="Implementations of basic algorithms and data structures",
-    long_description=readme + '\n\n' + history,
+    long_description=readme + '\n\n',
     author="Naren Mudivarthy",
     author_email='narenuday595@gmail.com',
     url='https://github.com/naren-m/ds_algos',
