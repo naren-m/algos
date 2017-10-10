@@ -6,9 +6,6 @@
 import pytest
 
 
-from algos import algos
-
-
 @pytest.fixture
 def response():
     """Sample pytest fixture.
