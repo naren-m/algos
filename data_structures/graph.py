@@ -1,9 +1,130 @@
-import abc
+#! /usr/local/bin/python3
+"""
+    Implementation of Graph.
+"""
 
+import abc
 import numpy as np
 
 
-class Graph(abc.ABC):
+class GraphBase(abc.ABC):
+    """
+    Graph data structure consists of a fineate set of vertices.
+    Set of ordered, unordered vertices to make a directed and
+    an undirected graph respectively.
+
+    Base class for graph implementation.
+
+    Reference: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
+    """
+
+    @abc.abstractmethod
+    def add_vertex(self, vertex):
+        """
+        To add an instance of vertex to graph
+        """
+        pass
+
+    @abc.abstractmethod
+    def add_edge(self, from_vertex, to_vertex, weight=None):
+        """
+        to add new directed edge with weight(optional) to graph.
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_vertex(self, vertexKey):
+        """
+        get specified vertex from the graph.
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_vertices(self):
+        """
+        get all vertices of a graph.
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_edge_weight(self, from_vertex, to_vertex):
+        """
+        gets the weight of the edge between vertices.
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_indegree(self, vertex):
+        """
+        gets the number of edges inbound to vertex.
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_adjacent_vertices(self, vertex):
+        """
+        gets the list of vertices that are adjacent to the given vertex.
+        """
+        pass
+
+
+class Graph(GraphBase):
+    """
+    Graph data structure consists of a fineate set of vertices.
+    Set of ordered, unordered vertices to make a directed and
+    an undirected graph respectively.
+
+    Reference: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
+    """
+
+    def add_vertex(self, vertex):
+        """
+        To add an instance of vertex to graph
+        """
+        pass
+
+    def add_edge(self, from_vertex, to_vertex, weight=None):
+        """
+        to add new directed edge with weight(optional) to graph.
+        """
+        pass
+
+    def get_vertex(self, vertexKey):
+        """
+        get specified vertex from the graph.
+        """
+        pass
+
+    def get_vertices(self, ):
+        """
+        get all vertices of a graph.
+        """
+        pass
+
+    def get_edge_weight(self, from_vertex, to_vertex):
+        """
+        gets the weight of the edge between vertices. 
+        """
+        pass
+
+    def get_indegree(self, vertex):
+        """
+        gets the number of edges inbound to vertex. 
+        """
+        pass
+
+    def get_adjacent_vertices(self, vertex):
+        """
+        gets the list of vertices that are adjacent to the given vertex. 
+        """
+        pass
+
+
+g = Graph()
+g.get_vertices()
+
+
+class GraphOld(abc.ABC):
     def __init__(self, numVertices, directed=False):
         self.numVertices = numVertices
         self.directed = directed
@@ -31,7 +152,7 @@ class Graph(abc.ABC):
 # Implementation of Adjacency Matrix
 
 
-class AdjacencyMatrixGraph(Graph):
+class AdjacencyMatrixGraph(GraphOld):
     def __init__(self, numVertices, directed=False):
         super(AdjacencyMatrixGraph, self).__init__(numVertices, directed)
 
@@ -99,7 +220,7 @@ class Node:
         return self.adjacency_set
 
 
-class AdjacencySetGraph(Graph):
+class AdjacencySetGraph(GraphOld):
     def __init__(self, numVertices, directed=False):
         super(AdjacencySetGraph, self).__init__(numVertices, directed)
 
