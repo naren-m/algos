@@ -18,54 +18,111 @@ class GraphBase(abc.ABC):
     Reference: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
     """
 
+    def __init__(self, directed=False):
+        self.num_vertices = 0
+        self.directed = directed
+
     @abc.abstractmethod
-    def add_vertex(self, vertex):
+    def add_vertex(self, key, data=None):
         """
-        To add an instance of vertex to graph
+        To add a vertex to graph. With optional data parameter
         """
         pass
 
     @abc.abstractmethod
-    def add_edge(self, from_vertex, to_vertex, weight=None):
+    def add_edge(self, from_vertex, to_vertex, weight=0):
         """
-        to add new directed edge with weight(optional) to graph.
+        To add new directed edge with weight(optional) to graph.
         """
         pass
 
     @abc.abstractmethod
     def get_vertex(self, vertexKey):
         """
-        get specified vertex from the graph.
+        Get specified vertex from the graph.
         """
         pass
 
     @abc.abstractmethod
     def get_vertices(self):
         """
-        get all vertices of a graph.
+        Get all vertices of a graph.
         """
         pass
 
     @abc.abstractmethod
     def get_edge_weight(self, from_vertex, to_vertex):
         """
-        gets the weight of the edge between vertices.
+        Gets the weight of the edge between vertices.
         """
         pass
 
     @abc.abstractmethod
     def get_indegree(self, vertex):
         """
-        gets the number of edges inbound to vertex.
+        Gets the number of edges inbound to vertex.
         """
         pass
 
     @abc.abstractmethod
     def get_adjacent_vertices(self, vertex):
         """
-        gets the list of vertices that are adjacent to the given vertex.
+        Gets the list of vertices that are adjacent to the given vertex.
         """
         pass
+
+
+class Vertex():
+    """
+    Vertex is a building block of a graph abstract abstract_data_type.abc
+    An undirected graph consists of a set of vertices and a set of edges
+    (unordered pairs of vertices), while a directed graph consists of a
+    set of vertices and a set of arcs (ordered pairs of vertices)
+
+    Reference: https://en.wikipedia.org/wiki/Vertex_(graph_theory)
+
+    """
+
+    def __init__(self, key, data=None):
+        self.key = key
+        self.data = data
+        self.neighbors = dict()
+
+    def get_key(self):
+        """
+        To get key of the vertex.
+        """
+        return self.key
+
+    def add_neighbor(self, neighbor, weight=0):
+        """
+        To add neighbor to the vertex.
+        """
+        self.neighbors[neighbor] = weight
+
+    def get_weight(self, neighbor):
+        """
+        To get weight of the edge joining vertex and it's neighbor.
+        """
+        return self.neighbors[neighbor]
+
+    def set_vertex_data(self, data):
+        """
+        To set data for a vertex.
+        """
+        self.data = data
+
+    def get_vertex_data(self):
+        """
+        To get data for a vertex.
+        """
+        return self.data
+
+    def get_neighbors(self):
+        """
+        Gets the list of vertices that are adjacent to the given vertex.
+        """
+        return self.neighbors.keys()
 
 
 class Graph(GraphBase):
@@ -77,13 +134,13 @@ class Graph(GraphBase):
     Reference: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
     """
 
-    def add_vertex(self, vertex):
+    def add_vertex(self, key, data=None):
         """
         To add an instance of vertex to graph
         """
         pass
 
-    def add_edge(self, from_vertex, to_vertex, weight=None):
+    def add_edge(self, from_vertex, to_vertex, weight=0):
         """
         to add new directed edge with weight(optional) to graph.
         """
@@ -91,31 +148,31 @@ class Graph(GraphBase):
 
     def get_vertex(self, vertexKey):
         """
-        get specified vertex from the graph.
+        Get specified vertex from the graph.
         """
         pass
 
     def get_vertices(self, ):
         """
-        get all vertices of a graph.
+        Get all vertices of a graph.
         """
         pass
 
     def get_edge_weight(self, from_vertex, to_vertex):
         """
-        gets the weight of the edge between vertices. 
+        Gets the weight of the edge between vertices.
         """
         pass
 
     def get_indegree(self, vertex):
         """
-        gets the number of edges inbound to vertex. 
+        Gets the number of edges inbound to vertex.
         """
         pass
 
     def get_adjacent_vertices(self, vertex):
         """
-        gets the list of vertices that are adjacent to the given vertex. 
+        Gets the list of vertices that are adjacent to the given vertex.
         """
         pass
 
