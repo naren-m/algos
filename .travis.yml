@@ -1,5 +1,4 @@
 # Config file for automatic testing at travis-ci.org
-# This file will be regenerated if you run travis_pypi_setup.py
 
 language: python
 python:
@@ -10,11 +9,9 @@ python:
   # - 2.7
   # - 2.6
 
-
 install:
   - echo "nothing to install"
 
 # command to run tests, e.g. python setup.py test
 script:
   - make test
-

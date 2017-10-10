@@ -2,16 +2,12 @@
 
 Implementations of basic algorithms and data structures. This project is for learning purposes.
 
-[comment]: [![image](https://img.shields.io/pypi/v/ds_algos.svg)](https://pypi.python.org/pypi/ds_algos)
-
-[![image](https://img.shields.io/travis/naren-m/ds_algos.svg)](https://travis-ci.org/naren-m/ds_algos)
-
-[![Documentation Status](https://readthedocs.org/projects/ds_algos/badge/?version=latest)](https://ds_algos.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/naren-m/algos.svg?branch=master)](https://travis-ci.org/naren-m/algos)
 
 ## Installation
 
 ```shell
-pip3 install ds_algos
+source env.sh
 ```
 
 ## Usage
@@ -43,12 +39,3 @@ make test
 - [x] BST
 - [x] Graphs
 - [ ] Tries
-
-## License
-
-- Free software: MIT license
-- Documentation: <https://ds_algos.readthedocs.io>.
-
-## Acknowledgement
-
-This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter).
