@@ -37,7 +37,7 @@ class GraphBase(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_vertex(self, vertexKey):
+    def get_vertex(self, key):
         """
         Get specified vertex from the graph.
         """
@@ -88,6 +88,10 @@ class Vertex():
         self.data = data
         self.neighbors = dict()
 
+    def __str__(self):
+        return 'key: ' + str(self.key) + ', data: ' + str(self.data) + \
+            ', neighbors : ' + str([x.key for x in self.neighbors])
+
     def get_key(self):
         """
         To get key of the vertex.
@@ -134,35 +138,54 @@ class Graph(GraphBase):
     Reference: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
     """
 
+    def __init__(self, directed=False):
+        super(Graph, self).__init__(directed)
+
+        self.vertices = dict()
+
     def add_vertex(self, key, data=None):
         """
         To add an instance of vertex to graph
         """
-        pass
+        v = Vertex(key, data)
+        self.vertices[key] = v
+        self.num_vertices += 1
+        return v
 
     def add_edge(self, from_vertex, to_vertex, weight=0):
         """
         to add new directed edge with weight(optional) to graph.
         """
-        pass
+        if from_vertex not in self.vertices:
+            fv = self.add_vertex(from_vertex.key, from_vertex.data)
 
-    def get_vertex(self, vertexKey):
+        if to_vertex not in self.vertices:
+            tv = self.add_vertex(to_vertex.key, to_vertex.data)
+
+        self.vertices[fv.key].add_neighbor(self.vertices[tv.key], weight)
+
+        if self.directed:
+            self.vertices[tv.key].add_neighbor(self.vertices[fv.key], weight)
+
+    def get_vertex(self, key):
         """
         Get specified vertex from the graph.
         """
-        pass
+        return self.vertices[key]
 
-    def get_vertices(self, ):
+    def get_vertices(self):
         """
         Get all vertices of a graph.
         """
-        pass
+        return self.vertices
 
     def get_edge_weight(self, from_vertex, to_vertex):
         """
         Gets the weight of the edge between vertices.
         """
-        pass
+        # TODO: Raise key not found exception if not exists
+        return self.vertices[from_vertex.key].get_weight(
+            self.vertices[to_vertex])
 
     def get_indegree(self, vertex):
         """
@@ -174,7 +197,7 @@ class Graph(GraphBase):
         """
         Gets the list of vertices that are adjacent to the given vertex.
         """
-        pass
+        return vertex.get_neighbors()
 
 
 g = Graph()

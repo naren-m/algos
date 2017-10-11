@@ -36,6 +36,11 @@ make test
 - [x] Queues
 - [x] Linked lists
 - [ ] Hash map
-- [x] BST
+- [ ] Trees
+  - [x] BST
+  - [ ] Balanced binary trees
+  - [ ] AVL Trees
+  - [ ] Binary Heap
 - [x] Graphs
 - [ ] Tries
+- [ ] Priority Queues

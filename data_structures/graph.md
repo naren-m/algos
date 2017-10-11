@@ -58,6 +58,13 @@ ending at the same vertex.
 - [ ] get_edge_weight(from_vertex, to_vertex) gets the weight of the edge between vertices.
 - [ ] get_indegree(vertex) gets the number of edges inbound to vertex.
 
+## Graph Traversal
+
+## BFS
+
+![Alt text](images/graphs/BFS_undirected_graph.gif "BFS on undirected graph")
+[Source for above gif](https://www.cs.usfca.edu/~galles/visualization/BFS.html)
+
 ## References
 
 - [Problem Solving with Algorithms and Data Structures](https://interactivepython.org/runestone/static/pythonds/Graphs/toctree.html)
