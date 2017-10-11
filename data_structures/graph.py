@@ -1,75 +1,9 @@
-#! /usr/local/bin/python3
 """
     Implementation of Graph.
 """
 
 import abc
 import numpy as np
-
-
-class GraphBase(abc.ABC):
-    """
-    Graph data structure consists of a fineate set of vertices.
-    Set of ordered, unordered vertices to make a directed and
-    an undirected graph respectively.
-
-    Base class for graph implementation.
-
-    Reference: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
-    """
-
-    def __init__(self, directed=False):
-        self.num_vertices = 0
-        self.directed = directed
-
-    @abc.abstractmethod
-    def add_vertex(self, key, data=None):
-        """
-        To add a vertex to graph. With optional data parameter
-        """
-        pass
-
-    @abc.abstractmethod
-    def add_edge(self, from_vertex, to_vertex, weight=0):
-        """
-        To add new directed edge with weight(optional) to graph.
-        """
-        pass
-
-    @abc.abstractmethod
-    def get_vertex(self, key):
-        """
-        Get specified vertex from the graph.
-        """
-        pass
-
-    @abc.abstractmethod
-    def get_vertices(self):
-        """
-        Get all vertices of a graph.
-        """
-        pass
-
-    @abc.abstractmethod
-    def get_edge_weight(self, from_vertex, to_vertex):
-        """
-        Gets the weight of the edge between vertices.
-        """
-        pass
-
-    @abc.abstractmethod
-    def get_indegree(self, vertex):
-        """
-        Gets the number of edges inbound to vertex.
-        """
-        pass
-
-    @abc.abstractmethod
-    def get_adjacent_vertices(self, vertex):
-        """
-        Gets the list of vertices that are adjacent to the given vertex.
-        """
-        pass
 
 
 class Vertex():
@@ -86,11 +20,14 @@ class Vertex():
     def __init__(self, key, data=None):
         self.key = key
         self.data = data
-        self.neighbors = dict()
+        self._neighbors = dict()
 
     def __str__(self):
         return 'key: ' + str(self.key) + ', data: ' + str(self.data) + \
-            ', neighbors : ' + str([x.key for x in self.neighbors])
+            ', neighbors : ' + str([x.key for x in self._neighbors])
+
+    def __iter__(self):
+        return iter(self._neighbors.items())
 
     def get_key(self):
         """
@@ -102,13 +39,13 @@ class Vertex():
         """
         To add neighbor to the vertex.
         """
-        self.neighbors[neighbor] = weight
+        self._neighbors[neighbor] = weight
 
     def get_weight(self, neighbor):
         """
         To get weight of the edge joining vertex and it's neighbor.
         """
-        return self.neighbors[neighbor]
+        return self._neighbors[neighbor]
 
     def set_vertex_data(self, data):
         """
@@ -122,14 +59,14 @@ class Vertex():
         """
         return self.data
 
-    def get_neighbors(self):
+    def neighbors(self):
         """
         Gets the list of vertices that are adjacent to the given vertex.
         """
-        return self.neighbors.keys()
+        return [x.key for x in self._neighbors]
 
 
-class Graph(GraphBase):
+class Graph():
     """
     Graph data structure consists of a fineate set of vertices.
     Set of ordered, unordered vertices to make a directed and
@@ -139,69 +76,89 @@ class Graph(GraphBase):
     """
 
     def __init__(self, directed=False):
-        super(Graph, self).__init__(directed)
+        self.directed = directed
+        self.num_vertices = 0
+        self._vertices = dict()
 
-        self.vertices = dict()
+    def __iter__(self):
+        return iter(self._vertices.items())
+
+    def get_vertex_count(self):
+        """
+        Returns number of vertices in graph
+        """
+        return self.num_vertices
 
     def add_vertex(self, key, data=None):
         """
         To add an instance of vertex to graph
         """
         v = Vertex(key, data)
-        self.vertices[key] = v
+        self._vertices[key] = v
         self.num_vertices += 1
         return v
 
-    def add_edge(self, from_vertex, to_vertex, weight=0):
+    def add_edge(self, f_vertex, t_vertex, weight=0):
         """
-        to add new directed edge with weight(optional) to graph.
+        To add new edge with weight(optional) to graph.
         """
-        if from_vertex not in self.vertices:
-            fv = self.add_vertex(from_vertex.key, from_vertex.data)
+        try:
+            fv = self._vertices[f_vertex.key]
+        except KeyError:
+            raise KeyError("Vertex key not found", f_vertex)
 
-        if to_vertex not in self.vertices:
-            tv = self.add_vertex(to_vertex.key, to_vertex.data)
+        try:
+            tv = self._vertices[t_vertex.key]
+        except KeyError:
+            raise KeyError("Vertex key not found", t_vertex)
 
-        self.vertices[fv.key].add_neighbor(self.vertices[tv.key], weight)
+        self._vertices[fv.key].add_neighbor(
+            self._vertices[tv.key], weight)
 
         if self.directed:
-            self.vertices[tv.key].add_neighbor(self.vertices[fv.key], weight)
+            self._vertices[tv.key].add_neighbor(
+                self._vertices[fv.key], weight)
 
     def get_vertex(self, key):
         """
         Get specified vertex from the graph.
         """
-        return self.vertices[key]
+        return self._vertices[key]
 
-    def get_vertices(self):
+    def vertices(self):
         """
-        Get all vertices of a graph.
+        Get keys of all vertices of a graph.
         """
-        return self.vertices
+        return [k for k, _ in self]
+
+    def edges(self):
+        """
+        Get all edges of a graph.
+        """
+        return [(k, v.neighbors()) for k, v in self]
 
     def get_edge_weight(self, from_vertex, to_vertex):
         """
         Gets the weight of the edge between vertices.
         """
-        # TODO: Raise key not found exception if not exists
-        return self.vertices[from_vertex.key].get_weight(
-            self.vertices[to_vertex])
+        # : TODO: Raise key not found exception if not exists
+        return self._vertices[from_vertex.key].get_weight(
+            self._vertices[to_vertex])
 
-    def get_indegree(self, vertex):
+    def get_degree(self, vertex):
         """
-        Gets the number of edges inbound to vertex.
+        The number of outward directed graph edges from a given graph vertex
+        in a directed graph.
+
+        Gets the number of edges outbound to vertex.
         """
-        pass
+        return len(vertex.neighbors())
 
     def get_adjacent_vertices(self, vertex):
         """
         Gets the list of vertices that are adjacent to the given vertex.
         """
         return vertex.get_neighbors()
-
-
-g = Graph()
-g.get_vertices()
 
 
 class GraphOld(abc.ABC):

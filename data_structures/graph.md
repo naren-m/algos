@@ -21,11 +21,13 @@ set of vertices and a set of arcs (ordered pairs of vertices)
 
 Edge is another fundamental part of the graph which connects 2 or more vertices.
 An edge could be directed or undirected.
-If the edge is directed, undirected we call the directed graph as directed, undirected graph respectively.
+If the edge is directed, undirected we call the directed graph as directed,
+undirected graph respectively.
 
 ### Weight
 
-Edges can be associated with weights representing the cost to traverse from one vertex to another.
+Edges can be associated with weights representing the cost to traverse
+from one vertex to another.
 
 ### Path
 
@@ -35,6 +37,17 @@ Path in a graph is finite/infinite sequence of vertices connected by edges.
 
 Cycle is a closed walk consisting of sequence of vertices and starting and
 ending at the same vertex.
+
+### Degree
+
+Degree is the number of vertices adjacent to a vertex.
+
+#### Degree in directed graphs
+
+**Indegree:** The number of inward directed graph edges from a given vertex in a directed graph.
+
+**Outdegree:** The number of outward directed graph edges from a given vertex in a directed graph.
+Also called as "branching factor" in trees
 
 ## Operations
 
@@ -49,14 +62,16 @@ ending at the same vertex.
 
 ### Operations on graph
 
-- [ ] add_vertex(vertex) or addNode(node) to add an instance of vertex to graph.
+- [x] add_vertex(vertex) or addNode(node) to add an instance of vertex to graph.
 - [ ] remove_vertex(vertex) to remove vertex from the graph.
-- [ ] add_edge(from_vertex, to_vertex, weight) to add new directed edge with weight to graph.
+- [x] add_edge(from_vertex, to_vertex, weight) to add new directed edge with weight to graph.
 - [ ] remove_edge(from_vertex, to_vertex) to remove an edge from graph.
-- [ ] get_vertex(vertexKey) get specified vertex from the graph.
-- [ ] get_vertices() get all vertices of a graph.
-- [ ] get_edge_weight(from_vertex, to_vertex) gets the weight of the edge between vertices.
+- [x] get_vertex(vertexKey) get specified vertex from the graph.
+- [x] vertices() get all vertices of a graph.
+- [x] edges get all edges of a graph.
+- [x] get_edge_weight(from_vertex, to_vertex) gets the weight of the edge between vertices.
 - [ ] get_indegree(vertex) gets the number of edges inbound to vertex.
+- [x] get_degree(vertex) gets the number of edges outbound to vertex.
 
 ## Graph Traversal
 
@@ -70,3 +85,4 @@ ending at the same vertex.
 - [Problem Solving with Algorithms and Data Structures](https://interactivepython.org/runestone/static/pythonds/Graphs/toctree.html)
 - [Wiki page on graphs](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
 - [Wiki page on vertex](https://en.wikipedia.org/wiki/Vertex_(graph_theory))
+- [Graph theory tutorials point](https://www.tutorialspoint.com/graph_theory/graph_theory_fundamentals.htm)
