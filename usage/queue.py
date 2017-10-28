@@ -1,14 +1,16 @@
-import data_structures as ds
+from data_structures import queue
 
 
 def main():
-    q = ds.queue.Queue()
+    q = queue.Queue()
     q.enqueue('1')
     q.enqueue('2')
     q.enqueue('3')
     q.print_queue()
-    data = q.dequeue()
-    print("Dequeued", data)
+    while not q.is_empty():
+        data = q.dequeue()
+        print("Dequeued", data)
+        q.print_queue()
 
 
 if __name__ == '__main__':
