@@ -11,7 +11,7 @@ class Vertex():
     Vertex is a building block of a graph abstract abstract_data_type.abc
     An undirected graph consists of a set of vertices and a set of edges
     (unordered pairs of vertices), while a directed graph consists of a
-    set of vertices and a set of arcs (ordered pairs of vertices)
+    set of vertices and a set of edges (ordered pairs of vertices)
 
     Reference: https://en.wikipedia.org/wiki/Vertex_(graph_theory)
     """
