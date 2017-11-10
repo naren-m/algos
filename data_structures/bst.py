@@ -73,7 +73,7 @@ class BinarySearchTree:
         """
         if self.left != None:
             self.left.in_order()
-        print(self.data)
+        print(self.data, end=', ')
         if self.right != None:
             self.right.in_order()
 
@@ -81,11 +81,21 @@ class BinarySearchTree:
         """
            Traverse tree in pre order
         """
-        print(self.data)
+        print(self.data, end=', ')
         if self.left != None:
             self.left.pre_order()
         if self.right != None:
             self.right.pre_order()
+
+    def post_order(self):
+        """
+           Traverse tree in post order
+        """
+        if self.left != None:
+            self.left.pre_order()
+        if self.right != None:
+            self.right.pre_order()
+        print(self.data, end=', ')
 
 
 def _check(minimum, root, maximum):
@@ -93,7 +103,8 @@ def _check(minimum, root, maximum):
         return True
     if not minimum < root.data < maximum:
         return False
-    return _check(minimum, root.left, root.data) and _check(root.data, root.right, maximum)
+    return _check(minimum, root.left, root.data) and _check(
+        root.data, root.right, maximum)
 
 
 def validate_bst(root):
