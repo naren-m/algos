@@ -1,25 +1,25 @@
-def linear(A, key):
-    for i, e in enumerate(A):
-        if e == key:
+def linear(A, k):
+    for i in range(len(A)):
+        if A[i] == k:
             return i
 
+    return None
 
-def binary(A, key):
-    def _binary_search(A, l, r, k):
-        mid = (l + r) // 2
-        if A[mid] == k:
-            return mid
 
-        if l == mid:
+def binary(A, k):
+    def _binary_search(A, k, l, r):
+        m = (l + r) // 2
+        if A[m] == k:
+            return m
+        if m == l:
             return None
 
-            # return None
-        if key < A[mid]:
-            return _binary_search(A, l, mid, k)
+        if k < A[m]:
+            return _binary_search(A, k, l, m)
         else:
-            return _binary_search(A, mid + 1, r, k)
+            return _binary_search(A, k, m + 1, r)
 
-    return _binary_search(A, 0, len(A) - 1, key)
+    return _binary_search(A, k, 0, len(A) - 1)
 
 
 _search_algos = [linear, binary]
