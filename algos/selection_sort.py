@@ -2,7 +2,6 @@ def selection_sort(A):
     l = len(A)
     for i in range(l - 1):
         min_index = i
-
         for j in range(i + 1, l):
             if A[j] < A[min_index]:
                 min_index = j

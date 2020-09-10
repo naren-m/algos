@@ -1,40 +1,38 @@
-def merge_sort(array):
-    if len(array) < 2:
-        return array
+def merge_sort(A: list):
+    if len(A) == 1:
+        return A
 
-    mid = len(array) // 2
-    left = merge_sort(array[:mid])
-    right = merge_sort(array[mid:])
+    mid = (0 + len(A)) // 2
+    L = merge_sort(A[:mid])
+    R = merge_sort(A[mid:])
 
-    array = merge(left, right, array)
+    A = merge(L, R, A)
 
-    return array
+    return A
 
 
-def merge(left, right, array):
-    index = 0
-    l = 0
-    r = 0
-    while l < len(left) and r < len(right):
-        if left[l] < right[r]:
-            array[index] = left[l]
+def merge(L, R, A):
+    l = r = i = 0
+    while l < len(L) and r < len(R):
+        if L[l] < R[r]:
+            A[i] = L[l]
             l += 1
         else:
-            array[index] = right[r]
+            A[i] = R[r]
             r += 1
-        index += 1
+        i += 1
 
-    while l < len(left):
-        array[index] = left[l]
-        index += 1
+    while l < len(L):
+        A[i] = L[l]
+        i += 1
         l += 1
 
-    while r < len(right):
-        array[index] = right[r]
-        index += 1
+    while r < len(R):
+        A[i] = R[r]
+        i += 1
         r += 1
 
-    return array
+    return A
 
 
 tests = [{

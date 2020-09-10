@@ -2,7 +2,7 @@ def quick_sort(array):
     # Base case.
     #
     # No need to sort arrays with zero on one elements
-    if len(array) < 2:
+    if len(array) == 1:
         return array
 
     # Recursive case
@@ -22,6 +22,19 @@ def quick_sort(array):
     return quick_sort(left) + [pivot] + quick_sort(right)
 
 
-array = [2, 1, 5, 3, 4]
+tests = [{
+    'input': [2, 1, 5, 3, 3, 3, -1, 10, 20, 4],
+    'expected': [-1, 1, 2, 3, 3, 3, 4, 5, 10, 20]
+}, {
+    'input': [54, 26, 93, 17, 77, 31, 44, 55, 20],
+    'expected': [17, 20, 26, 31, 44, 54, 55, 77, 93]
+}, {
+    'input': [10, 20, 15, 45, 36, 48, 7, 60, 18, 50, 2, 19, 43, 30, 55],
+    'expected': [2, 7, 10, 15, 18, 19, 20, 30, 36, 43, 45, 48, 50, 55, 60]
+}]
 
-print(quick_sort(array))
+for test in tests:
+    arr = test['input']
+    quick_sort(arr)
+    print('Expected {}, got {}'.format(test['expected'], arr))
+    assert arr == test['expected']

@@ -19,8 +19,7 @@ def binary(A, key):
         else:
             return _binary_search(A, mid + 1, r, k)
 
-    i = _binary_search(A, 0, len(A) - 1, key)
-    return i
+    return _binary_search(A, 0, len(A) - 1, key)
 
 
 _search_algos = [linear, binary]
@@ -36,8 +35,8 @@ tests = [{
     'expected': None
 }]
 
-for test in tests:
-    for _search_algo in _search_algos:
+for _search_algo in _search_algos:
+    for test in tests:
         got = _search_algo(*test['input'])
         print('{}: Expected {}, got {}'.format(_search_algo.__name__,
                                                test['expected'], got))

@@ -1,4 +1,5 @@
 def insertion_sort(A):
+    # Start with an element to the left
     for i in range(1, len(A)):
         key = A[i]
         j = i - 1
