@@ -14,16 +14,20 @@
 
 class Stack:
     def __init__(self, size=100):
-        self.items = [None]*size
-        self.top = -1
+        self._size = size
+        self._top = -1
+        self._items = [None]*self._size
 
     def push(self, data):
         """
         Add element to top of the stack.
         Time Complexity O(1)
         """
-        self.top += 1
-        self.items[self.top] = data
+        if self._top== self._size:
+            raise Exception("Stack Overflow")
+
+        self._top += 1
+        self._items[self._top] = data
 
     def peek(self):
         """
@@ -33,7 +37,7 @@ class Stack:
         if self.isEmpty():
             return None
 
-        return self.items[self.top]
+        return self._items[self._top]
 
     def pop(self):
         """
@@ -43,17 +47,17 @@ class Stack:
         if self.isEmpty():
             return None
 
-        top = self.items[self.top]
-        self.top -= 1
+        top = self._items[self._top]
+        self._top -= 1
         return top
 
     def size(self):
-        return len(self.items)
+        return len(self._items)
 
     def isEmpty(self):
-        return self.top == -1
+        return self._top == -1
 
     def __str__(self) -> str:
         if self.isEmpty():
-            return 'Stack: [], top: {}'.format(self.top)
-        return 'Stack: {}, top: {}'.format(str(self.items[:self.top+1]), self.top)
+            return 'Stack: [], top: {}'.format(self._top)
+        return 'Stack: {}, top: {}'.format(str(self._items[:self._top+1]), self._top)

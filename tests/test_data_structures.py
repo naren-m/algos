@@ -6,7 +6,7 @@ from ..data_structures.stack import Stack
 class TestStack(unittest.TestCase):
     def test__init__(self):
         s = Stack()
-        self.assertEqual(s.top, -1)
+        self.assertEqual(s._top, -1)
         assert True  # TODO: implement your test here
 
     def test_push(self):
@@ -14,6 +14,13 @@ class TestStack(unittest.TestCase):
         for i in range(10):
             s.push(i)
             self.assertEqual(s.peek(), i)
+
+        # Stack Overflow
+        s = Stack(size=2)
+        s.push(1)
+        s.push(2)
+        with self.assertRaises(Exception):
+            s.push(3)
 
 
     def test_pop(self):
