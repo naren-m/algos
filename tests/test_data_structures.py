@@ -40,5 +40,6 @@ class TestStack(unittest.TestCase):
         self.assertIsNone(s.pop())
         print(s)
 
+
 if __name__ == '__main__':
     unittest.main()
