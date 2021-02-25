@@ -13,32 +13,47 @@
 
 
 class Stack:
-    def __init__(self):
-        self.items = list()
+    def __init__(self, size=100):
+        self.items = [None]*size
+        self.top = -1
 
     def push(self, data):
         """
         Add element to top of the stack.
         Time Complexity O(1)
         """
-        self.items.append(data)
+        self.top += 1
+        self.items[self.top] = data
 
     def peek(self):
         """
         Return element to top of the stack.
         Time Complexity O(1)
         """
-        return self.items[len(self.items) - 1]
+        if self.isEmpty():
+            return None
+
+        return self.items[self.top]
 
     def pop(self):
         """
         Delete element to top of the stack.
         Time Complexity O(1)
         """
-        return self.items.pop()
+        if self.isEmpty():
+            return None
+
+        top = self.items[self.top]
+        self.top -= 1
+        return top
 
     def size(self):
         return len(self.items)
 
     def isEmpty(self):
-        return self.items == []
+        return self.top == -1
+
+    def __str__(self) -> str:
+        if self.isEmpty():
+            return 'Stack: [], top: {}'.format(self.top)
+        return 'Stack: {}, top: {}'.format(str(self.items[:self.top+1]), self.top)

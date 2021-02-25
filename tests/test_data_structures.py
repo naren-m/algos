@@ -1,0 +1,37 @@
+import unittest
+
+from ..data_structures.stack import Stack
+
+
+class TestStack(unittest.TestCase):
+    def test__init__(self):
+        s = Stack()
+        self.assertEqual(s.top, -1)
+        assert True  # TODO: implement your test here
+
+    def test_push(self):
+        s = Stack()
+        for i in range(10):
+            s.push(i)
+            self.assertEqual(s.peek(), i)
+
+
+    def test_pop(self):
+        s = Stack()
+        for i in range(11):
+            s.push(i)
+            self.assertEqual(s.peek(), i)
+        print()
+        print(s)
+        for i in range(10, -1, -1):
+            self.assertEqual(s.peek(), i)
+            pop = s.pop()
+            self.assertNotEqual(pop, s.peek())
+            self.assertEqual(pop, i)
+            print(s, 'pop {}'.format(i))
+
+        self.assertIsNone(s.pop())
+        print(s)
+
+if __name__ == '__main__':
+    unittest.main()
