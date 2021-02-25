@@ -1,14 +1,14 @@
 def insertion_sort(A):
+    i = None
     for i in range(1, len(A)):
         key = A[i]
         j = i - 1
 
-        while j >= 0 and key < A[j]:
-            A[j + 1] = A[j]
-            j -= 1
+        while j >= 0 and A[j] > key:
+            A[j+1] = A[j]
+            j = j - 1
 
-        A[j + 1] = key
-
+        A[j+1] = key
 
 tests = [{
     'input': [54, 26, 93, 17, 77, 31, 44, 55, 20],

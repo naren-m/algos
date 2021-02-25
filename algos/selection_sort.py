@@ -8,7 +8,6 @@ def selection_sort(A):
 
         A[i], A[min_index] = A[min_index], A[i]
 
-
 tests = [{
     'input': [54, 26, 93, 17, 77, 31, 44, 55, 20],
     'expected': [17, 20, 26, 31, 44, 54, 55, 77, 93]
