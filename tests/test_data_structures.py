@@ -1,6 +1,7 @@
 import unittest
 
 from ..data_structures.stack import Stack
+from ..data_structures.queue import Queue
 
 
 class TestStack(unittest.TestCase):
@@ -39,6 +40,44 @@ class TestStack(unittest.TestCase):
 
         self.assertIsNone(s.pop())
         print(s)
+
+class TestQueue(unittest.TestCase):
+    def test__init__(self):
+        q = Queue()
+        self.assertEqual(len(q), 0)
+
+    def test_enqueue(self):
+        q = Queue()
+        q.enqueue(1)
+        q.enqueue(2)
+        q.enqueue(3)
+        print(q)
+        self.assertEqual(q.peek(), 1)
+
+    def test_dequeue(self):
+        q = Queue()
+        q.enqueue(1)
+        q.enqueue(2)
+        q.enqueue(3)
+        print(q)
+        self.assertEqual(q.peek(), 1)
+
+        t = q.dequeue()
+        self.assertEqual(t, 1)
+        print(q)
+        self.assertEqual(q.peek(), 2)
+
+        t = q.dequeue()
+        self.assertEqual(t, 2)
+        print(q)
+        self.assertEqual(q.peek(), 3)
+
+        t = q.dequeue()
+        self.assertEqual(t, 3)
+        print(q)
+
+        self.assertEqual(len(q), 0)
+        self.assertTrue(q.isEmpty())
 
 
 if __name__ == '__main__':
