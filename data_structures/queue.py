@@ -11,25 +11,36 @@
 
 class Queue:
 
-    def __init__(self):
-        self.items = list()
+    def __init__(self, size=100):
+        self._size = size
+        self._items = [None]*self._size
+        self._head = 0
+        self._tail = -1
 
     def enqueue(self, data):
-        self.items.insert(0, data)
+        self._tail += 1
+        self._items[self._tail] = data
+
+    def peek(self):
+        return self._items[self._head]
 
     def dequeue(self):
-        return self.items.pop()
+        if self.isEmpty():
+            return None
+        head = self._items[self._head]
+        self._head -= 1
+        return head
 
-    def is_empty(self):
-        return len(self.items) == 0
+    def isEmpty(self):
+        return len(self) == 0
 
     def __len__(self):
-        return len(self.items)
+        return len(self._items[self._head:self._tail+1])
 
-    def size(self):
-        return len(self.items)
+    def __str__(self):
+        if self.isEmpty():
+            return 'Queue: [], Head: {}, Tail: {}'.format(
+                self._head, self._tail)
+        return 'Queue: {}, Head: {}, Tail: {}'.format(
+            str(self._items[self._head:self._tail+1]), self._head, self._tail)
 
-    def print_queue(self):
-        for elem in self.items:
-            print(elem,)
-        print()
