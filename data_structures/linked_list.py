@@ -7,78 +7,129 @@
 
 """
 
-from __future__ import print_function
-
 
 class Node:
-    def __init__(self, data=None, nxt=None):
+    def __init__(self, data, next=None) -> None:
         self.data = data
-        self.next = nxt
+        self.next = next
+
+    def __str__(self) -> str:
+        return '[{}] --> {}'.format(self.data, self.next)
 
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self) -> None:
         self.head = None
-        self.size = 0
+        self._size = 0
 
-    def add(self, data):
-        """
-            Adds node to the end of linked list
-            Time Complexity: O(N)
-        """
-        new_node = Node(data, None)
-        if self.head is None:
-            self.head = new_node
-        else:
-            current_node = self.head
-            while current_node.next != None:
-                current_node = current_node.next
-            current_node.next = new_node
+    def __getitem__(self, index):
+        h = self._moveTo(index)
 
-        self.size = self.size + 1
+        return h.data
 
-    def delete(self, data):
-        """
-            Deletes a node from linked list
-            Time Complexity: O(N)
+    def __setitem__(self, index, value):
+        h = self._moveTo(index)
+        h.data = value
 
-            FIXME: Has bug in this implementation
-            May fail if the node we are deleting is Root node
-        """
-        current_node = self.head
+    def _moveTo(self, index):
+        h = self.head
+        for i in range(index):
+            h = h.next
 
-        prev = self.head
-        while current_node != None:
-            if current_node.data == data:
-                prev.next = current_node.next
-                del current_node
-                self.size = self.size - 1
-                return
+        return h
 
-            prev = current_node
-            current_node = current_node.next
+    @property
+    def size(self):
+        return self._size
 
-    def print_list(self):
-        current_node = self.head
-        print(current_node.data, "(Head) -> ", end='')
-        current_node = current_node.next
-        while current_node != None:
-            print(current_node.data, " -> ", end='')
-            current_node = current_node.next
-        print("[None]")
+    def append(self, data):
+        self._size +=1
+        if not self.head:
+            self.head = Node(data)
+            return
 
-    def search(self, data):
-        """
-            Search for an element in linked list
-            Time Complexity: O(N)
-        """
-        current_node = self.head
-        while current_node != None:
-            if data == current_node.data:
-                return current_node
-            current_node = current_node.next
+        n = Node(data)
+        h = self.head
+        while h.next:
+            h = h.next
+
+        h.next = n
+
+    def insert(self, index, value):
+        self._size += 1
+        n = Node(value)
+        h = self._moveTo(index -1)
+        n.next = h.next
+        h.next = n
+
+    def find(self, value):
+        h = self.head
+        while h:
+            if h.data == value:
+                return h
+            h = h.next
 
         return None
 
+    def remove(self, value):
+        if self._size == 0 or not self.head:
+            return
+        elif self._size == 1 and self.head.data == value:
+            self.head = None
+            self._size -= 1
+            return
+
+        h = self.head
+        if h.data == value:
+            self.head = h.next
+            h = None
+            self._size -= 1
+
+        prev = None
+        while h:
+            if h.data == value:
+                break
+            prev = h
+            h = h.next
+
+        if not h: return
+        prev.next = h.next
+        self._size -= 1
+
+
+    def pop(self, index):
+        self._size -= 1
+        h = self._moveTo(index - 1)
+
+        if h is self.head:
+            self.head = h.next
+            return
+
+        h.next = h.next.next
+
+    def peekFront(self):
+        return self.head.data
+
+    def peekBack(self):
+        pass
+
+    def pushFront(self):
+        pass
+
+    def pushBack(self):
+        pass
+
     def __len__(self):
-        return self.size
+        return self._size
+
+
+    def __str__(self):
+        h = self.head
+        s = ''
+        while h.next:
+            s += '{}, '.format(h.data)
+            h = h.next
+
+        s += '{}'.format(h.data)
+
+        return s
