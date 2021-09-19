@@ -56,9 +56,14 @@ class LinkedList:
         h.next = n
 
     def insert(self, index, value):
+        if index == 0:
+            self.pushFront(value)
+            return
+
         self._size += 1
         n = Node(value)
         h = self._moveTo(index -1)
+
         n.next = h.next
         h.next = n
 
@@ -96,7 +101,6 @@ class LinkedList:
         prev.next = h.next
         self._size -= 1
 
-
     def deleteAtEnd(self):
         h = self.head
 
@@ -116,7 +120,7 @@ class LinkedList:
     def pop(self, index=None):
 
         if index > self.size:
-            return
+            raise IndexError
 
         if index is None:
             self.deleteAtEnd()
@@ -142,8 +146,12 @@ class LinkedList:
 
         return h.data
 
-    def pushFront(self):
-        pass
+    def pushFront(self, value):
+        self._size += 1
+        n = Node(value)
+        n.next = self.head
+        self.head = n
+        return
 
     def pushBack(self):
         pass

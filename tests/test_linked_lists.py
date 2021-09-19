@@ -25,13 +25,22 @@ class TestLinkedList(unittest.TestCase):
         for i in range(0, 10):
             ll.append(i)
 
-        ll.insert(value=10, index=9)
-
         expected = list(range(0, 10))
-        expected.insert(9, 10)
-        self.assertEqual(ll[9], 10)
 
-        self._checkEqual(ll, expected)
+        def _insert(index, val):
+            ll.insert(index, val)
+            expected.insert(index, val)
+            print(ll)
+            self.assertEqual(ll[index], val)
+            self._checkEqual(ll, expected)
+
+        _insert(9, 10)
+        _insert(0, 100)
+        _insert(1, 200)
+        _insert(0, 101)
+        _insert(ll.size, 1000)
+        _insert(ll.size, 1001)
+
 
     def _checkEqual(self, ll, expected):
         print('Expected: {}, Got: {}'.format(expected, ll))
@@ -96,11 +105,9 @@ class TestLinkedList(unittest.TestCase):
         # _pop(4)
         # _pop(3)
         _pop(0)
+        _pop(1)
 
         # ll.pop(1)
-        print('----->', expected.pop())
-        _pop(1)
-        self._checkEqual(ll, expected)
 
         # print(expected, ll)
 
