@@ -34,6 +34,7 @@ class TestLinkedList(unittest.TestCase):
         self._checkEqual(ll, expected)
 
     def _checkEqual(self, ll, expected):
+        print('Expected: {}, Got: {}'.format(expected, ll))
         n = ll.head
         for v in expected:
             self.assertEqual(v, n.data, 'expected {}, got {}'.format(v, n.data))
@@ -41,6 +42,15 @@ class TestLinkedList(unittest.TestCase):
 
         self.assertEqual(len(expected), len(ll), 'Length is different, expected {}, got {}'.format(len(expected), len(ll)))
 
+    def _createLL(self, n=9):
+        ll = LinkedList()
+
+        for i in range(0, n):
+            ll.append(i)
+
+        self.assertEqual(ll.size, n)
+
+        return ll
 
     def test_set(self):
         ll = LinkedList()
@@ -50,35 +60,49 @@ class TestLinkedList(unittest.TestCase):
         ll[0] = 100
         self.assertEqual(ll[0], 100)
 
+    def test_deleteAtEnd(self):
+        n = 5
+        ll = self._createLL(n)
+        print(ll.head)
+        expected = list(range(0, n))
+
+        def _deleteEnd():
+            print('-'*8)
+            print('Deleting element at End')
+            ll.deleteAtEnd()
+            expected.pop()
+            self._checkEqual(ll, expected)
+            print('head: {}'.format(ll.head), '\n', expected, len(expected))
+
+        for i in range(n):
+            _deleteEnd()
+
     def test_pop(self):
-        ll = LinkedList()
-        for i in range(0, 10):
-            ll.append(i)
+        n = 3
+        ll = self._createLL(n)
+        print(ll.head)
+        expected = list(range(0, n))
 
-        expected = list(range(0, 10))
+        def _pop(i):
+            print('-'*8)
+            print('Popping element at {}'.format(i))
+            print('head: {}'.format(ll.head), '\n', expected, len(expected))
+            ll.pop(i)
+            expected.pop(i)
+            self._checkEqual(ll, expected)
+            print('head: {}'.format(ll.head), '\n', expected, len(expected))
 
 
-        ll.pop(9)
-        expected.pop(9)
+        # _pop(4)
+        # _pop(3)
+        _pop(0)
+
+        # ll.pop(1)
+        print('----->', expected.pop())
+        _pop(1)
         self._checkEqual(ll, expected)
 
-        ll.pop(3)
-        expected.pop(3)
-
-        self._checkEqual(ll, expected)
-
-
-        ll.pop(7)
-        expected.pop(7)
-        self._checkEqual(ll, expected)
-
-        ll.pop(0)
-        expected.pop(0)
-        print(expected, ll)
-
-        self._checkEqual(ll, expected)
-
-        print(expected, ll)
+        # print(expected, ll)
 
 
     def test_remove(self):
@@ -95,6 +119,12 @@ class TestLinkedList(unittest.TestCase):
             ll.remove(key)
             self._checkEqual(ll, expected)
 
+        ll = LinkedList()
+        ll.append(1)
+        ll.remove(1)
+
+        self.assertEqual(ll.size, 0)
+
 
     def test_find(self):
         ll = LinkedList()
@@ -107,16 +137,20 @@ class TestLinkedList(unittest.TestCase):
             self.assertIsNotNone(v)
             self.assertEqual(v.data, i, 'expected {}, got {}'.format(i, v))
 
-    def _createLL(self, n=9):
-        ll = LinkedList()
-
-        for i in range(0, n+1):
-            ll.append(i)
-
-        return ll
-
     def test_peekFront(self):
         ll = self._createLL(n=9)
         for i in range(0, 10):
             self.assertEqual(ll.peekFront(), i)
             ll.pop(0)
+
+    def test_peekBack(self):
+        ll = self._createLL(n=9)
+        expected = list(range(0, 10))
+        expected.reverse()
+        self.assertEqual(ll.peekBack(), 9)
+
+        print(ll, expected)
+        for i in expected:
+            # self.assertEqual(ll.peekBack(), i)
+            ll.pop()
+            print(ll)

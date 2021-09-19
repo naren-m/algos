@@ -97,10 +97,34 @@ class LinkedList:
         self._size -= 1
 
 
-    def pop(self, index):
+    def deleteAtEnd(self):
+        h = self.head
+
+        if h is None:
+            print('LL is empty')
+        elif h.next is None:
+            h = None
+            self._size -= 1
+            return
+
+        while h.next.next:
+            h = h.next
+
         self._size -= 1
+        h.next = None
+
+    def pop(self, index=None):
+
+        if index > self.size:
+            return
+
+        if index is None:
+            self.deleteAtEnd()
+            return
+
         h = self._moveTo(index - 1)
 
+        self._size -= 1
         if h is self.head:
             self.head = h.next
             return
@@ -108,10 +132,15 @@ class LinkedList:
         h.next = h.next.next
 
     def peekFront(self):
+        if not self.head:
+            return None
+
         return self.head.data
 
     def peekBack(self):
-        pass
+        h = self._moveTo(self.size - 1)
+
+        return h.data
 
     def pushFront(self):
         pass
