@@ -5,6 +5,25 @@ import unittest
 from data_structures.linked_list import LinkedList
 
 class TestLinkedList(unittest.TestCase):
+    def _checkEqual(self, ll, expected):
+        print('Expected: {}, Got: {}'.format(expected, ll))
+        n = ll.head
+        for v in expected:
+            self.assertEqual(v, n.data, 'expected {}, got {}'.format(v, n.data))
+            n = n.next
+
+        self.assertEqual(len(expected), len(ll), 'Length is different, expected {}, got {}'.format(len(expected), len(ll)))
+
+    def _createLL(self, n=9):
+        ll = LinkedList()
+
+        for i in range(0, n):
+            ll.append(i)
+
+        self.assertEqual(ll.size, n)
+
+        return ll
+
     def test__init__(self):
         pass
 
@@ -41,26 +60,6 @@ class TestLinkedList(unittest.TestCase):
         _insert(ll.size, 1000)
         _insert(ll.size, 1001)
 
-
-    def _checkEqual(self, ll, expected):
-        print('Expected: {}, Got: {}'.format(expected, ll))
-        n = ll.head
-        for v in expected:
-            self.assertEqual(v, n.data, 'expected {}, got {}'.format(v, n.data))
-            n = n.next
-
-        self.assertEqual(len(expected), len(ll), 'Length is different, expected {}, got {}'.format(len(expected), len(ll)))
-
-    def _createLL(self, n=9):
-        ll = LinkedList()
-
-        for i in range(0, n):
-            ll.append(i)
-
-        self.assertEqual(ll.size, n)
-
-        return ll
-
     def test_set(self):
         ll = LinkedList()
         for i in range(0, 10):
@@ -69,7 +68,7 @@ class TestLinkedList(unittest.TestCase):
         ll[0] = 100
         self.assertEqual(ll[0], 100)
 
-    def test_deleteAtEnd(self):
+    def test_deleteTail(self):
         n = 5
         ll = self._createLL(n)
         print(ll.head)
@@ -78,7 +77,7 @@ class TestLinkedList(unittest.TestCase):
         def _deleteEnd():
             print('-'*8)
             print('Deleting element at End')
-            ll.deleteAtEnd()
+            ll.deleteTail()
             expected.pop()
             self._checkEqual(ll, expected)
             print('head: {}'.format(ll.head), '\n', expected, len(expected))
@@ -86,8 +85,25 @@ class TestLinkedList(unittest.TestCase):
         for i in range(n):
             _deleteEnd()
 
+    def test_deleteHead(self):
+        n = 5
+        ll = self._createLL(n)
+        print(ll.head)
+        expected = list(range(0, n))
+
+        def _deleteHead():
+            print('-'*8)
+            print('Deleting element at Head')
+            ll.deleteHead()
+            expected.pop(0)
+            self._checkEqual(ll, expected)
+            print('head: {}'.format(ll.head), '\n', expected, len(expected))
+
+        for i in range(n):
+            _deleteHead()
+
     def test_pop(self):
-        n = 3
+        n = 5
         ll = self._createLL(n)
         print(ll.head)
         expected = list(range(0, n))
@@ -95,22 +111,20 @@ class TestLinkedList(unittest.TestCase):
         def _pop(i):
             print('-'*8)
             print('Popping element at {}'.format(i))
-            print('head: {}'.format(ll.head), '\n', expected, len(expected))
             ll.pop(i)
             expected.pop(i)
             self._checkEqual(ll, expected)
-            print('head: {}'.format(ll.head), '\n', expected, len(expected))
 
 
-        # _pop(4)
-        # _pop(3)
+        _pop(4)
+        _pop(3)
         _pop(0)
         _pop(1)
+        _pop(0)
 
         # ll.pop(1)
 
         # print(expected, ll)
-
 
     def test_remove(self):
         ll = LinkedList()
@@ -131,7 +145,6 @@ class TestLinkedList(unittest.TestCase):
         ll.remove(1)
 
         self.assertEqual(ll.size, 0)
-
 
     def test_find(self):
         ll = LinkedList()

@@ -31,6 +31,23 @@ class LinkedList:
         h = self._moveTo(index)
         h.data = value
 
+    def __len__(self):
+        return self._size
+
+    def __str__(self):
+        if self.head is None:
+            return 'None'
+
+        h = self.head
+        s = ''
+        while h.next:
+            s += '{}, '.format(h.data)
+            h = h.next
+
+        s += '{}'.format(h.data)
+
+        return s
+
     def _moveTo(self, index):
         h = self.head
         for i in range(index):
@@ -101,7 +118,7 @@ class LinkedList:
         prev.next = h.next
         self._size -= 1
 
-    def deleteAtEnd(self):
+    def deleteTail(self):
         h = self.head
 
         if h is None:
@@ -117,23 +134,32 @@ class LinkedList:
         self._size -= 1
         h.next = None
 
+    def deleteHead(self):
+        if self.head:
+            self.head = self.head.next
+            self._size -= 1
+
     def pop(self, index=None):
 
         if index > self.size:
             raise IndexError
 
         if index is None:
-            self.deleteAtEnd()
+            self.deleteTail()
+            return
+
+        if index == 0:
+            self.deleteHead()
             return
 
         h = self._moveTo(index - 1)
 
-        self._size -= 1
-        if h is self.head:
-            self.head = h.next
-            return
+        print('After parse loop', h)
 
-        h.next = h.next.next
+        if h.next:
+            h.next = h.next.next
+            self._size -= 1
+
 
     def peekFront(self):
         if not self.head:
@@ -153,20 +179,10 @@ class LinkedList:
         self.head = n
         return
 
-    def pushBack(self):
-        pass
-
-    def __len__(self):
-        return self._size
-
-
-    def __str__(self):
+    def pushBack(self, value):
         h = self.head
-        s = ''
-        while h.next:
-            s += '{}, '.format(h.data)
+        while h.next is None:
             h = h.next
 
-        s += '{}'.format(h.data)
+        h.next = Node(value)
 
-        return s
