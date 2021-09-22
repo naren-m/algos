@@ -122,10 +122,6 @@ class TestLinkedList(unittest.TestCase):
         _pop(1)
         _pop(0)
 
-        # ll.pop(1)
-
-        # print(expected, ll)
-
     def test_remove(self):
         ll = LinkedList()
         for i in range(0, 10):
@@ -158,19 +154,22 @@ class TestLinkedList(unittest.TestCase):
             self.assertEqual(v.data, i, 'expected {}, got {}'.format(i, v))
 
     def test_peekFront(self):
-        ll = self._createLL(n=9)
-        for i in range(0, 10):
+        n = 9
+        ll = self._createLL(n)
+        for i in range(0, 9):
             self.assertEqual(ll.peekFront(), i)
             ll.pop(0)
 
     def test_peekBack(self):
-        ll = self._createLL(n=9)
-        expected = list(range(0, 10))
+        n = 9
+        ll = self._createLL(n)
+        print(ll)
+        expected = list(range(0, n))
         expected.reverse()
-        self.assertEqual(ll.peekBack(), 9)
+        self.assertEqual(ll.peekBack(), n-1)
 
         print(ll, expected)
         for i in expected:
-            # self.assertEqual(ll.peekBack(), i)
+            self.assertEqual(ll.peekBack(), i)
             ll.pop()
             print(ll)

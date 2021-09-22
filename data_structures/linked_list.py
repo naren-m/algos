@@ -140,13 +140,12 @@ class LinkedList:
             self._size -= 1
 
     def pop(self, index=None):
-
-        if index > self.size:
-            raise IndexError
-
         if index is None:
             self.deleteTail()
             return
+
+        if index > self.size:
+            raise IndexError
 
         if index == 0:
             self.deleteHead()
