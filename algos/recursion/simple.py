@@ -9,3 +9,16 @@ def reverse(string):
 
 
 print(reverse("hello"))
+
+def isPalindrome(string):
+    if len(string) == 1 :
+        return True
+
+    if string[0] == string[-1]:
+        return isPalindrome(string[1:-1])
+    
+    return False
+
+print('Kayak is palindrome ', isPalindrome('kayak'))
+print('Naren is palindrome ', isPalindrome('Naren'))
+print('racecar is palindrome ', isPalindrome('racecar'))
