@@ -6,20 +6,27 @@ def linear(A, k):
     return None
 
 
-def binary(A, k):
-    def _binary_search(A, k, l, r):
-        m = (l + r) // 2
-        if A[m] == k:
-            return m
-        if m == l:
+def binary(arr, val):
+    def search(arr, val, l, r):
+        # Base case
+        ## 1. Negative
+        if l > r:
             return None
 
-        if k < A[m]:
-            return _binary_search(A, k, l, m)
-        else:
-            return _binary_search(A, k, m + 1, r)
+        ## 2. Positive case
+        mid = (l + r) // 2
 
-    return _binary_search(A, k, 0, len(A) - 1)
+        if arr[mid] == val:
+            return mid
+        
+        # Recursive step, rules to reduce all other cases to base case
+        if val < arr[mid]:
+            # Search in the left side of the array
+            return search(arr, val, l, mid)
+
+        return search(arr, val, mid+1, r)
+
+    return search(arr, val, 0, len(arr)-1)
 
 
 _search_algos = [linear, binary]
