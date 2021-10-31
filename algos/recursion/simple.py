@@ -22,3 +22,14 @@ def isPalindrome(string):
 print('Kayak is palindrome ', isPalindrome('kayak'))
 print('Naren is palindrome ', isPalindrome('Naren'))
 print('racecar is palindrome ', isPalindrome('racecar'))
+
+
+def decToBin(n, result=''):
+    if n == 0:
+        return result;
+    
+    result = '{}{}'.format(n%2, result)
+
+    return decToBin(n/2, result)
+
+print(decToBin(16))
