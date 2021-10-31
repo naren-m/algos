@@ -33,3 +33,12 @@ def decToBin(n, result=''):
     return decToBin(n/2, result)
 
 print(decToBin(16))
+
+def sumOfNN(num):
+    if num == 1:
+        return 1
+
+    return sumOfNN(num-1) + num
+
+print(sumOfNN(5))
+
