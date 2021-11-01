@@ -185,3 +185,6 @@ class LinkedList:
 
         h.next = Node(value)
 
+    def reverse(self):
+        pass
+
