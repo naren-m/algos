@@ -1,35 +1,39 @@
-def merge_sort(A):
-    if len(A) == 1: return A
-    mid = (0 + len(A)) // 2
-    left = merge_sort(A[:mid])
-    right = merge_sort(A[mid:])
-    return merge(left, right, A)
+def merge_sort(arr):
+    if len(arr) == 1:
+        return arr
+    mid = (0 + len(arr)) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right, arr)
 
-
-def merge(left, right, A):
+def merge(left, right, arr):
     l = r = i = 0
 
-    while l < len(left) and r < len(right):
+    ll = len(left)
+    lr = len(right)
+
+    while l < ll and r < lr :
         if left[l] < right[r]:
-            A[i] = left[l]
+            arr[i] = left[l]
             l += 1
         else:
-            A[i] = right[r]
+            arr[i] = right[r]
             r += 1
-
         i += 1
 
-    while l < len(left):
-        A[i] = left[l]
+    # poplulating remaining
+    while l < ll:
+        arr[i] = left[l]
+        i += 1
         l += 1
-        i += 1
 
-    while r < len(right):
-        A[i] = right[r]
+    while r < lr:
+        arr[i] = right[r]
+        i += 1
         r += 1
-        i += 1
 
-    return A
+    return arr
+
 
 
 tests = [{
