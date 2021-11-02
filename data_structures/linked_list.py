@@ -186,5 +186,16 @@ class LinkedList:
         h.next = Node(value)
 
     def reverse(self):
-        pass
+        def _reverse(head):
+            if head is None or head.next is None:
+                return head
+
+            n = _reverse(head.next)
+            head.next.next = head
+            head.next = None
+
+            return n
+
+        head = self.head
+        self.head = _reverse(head)
 
