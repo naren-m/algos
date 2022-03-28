@@ -25,13 +25,13 @@ def _convertArr(l):
     # required length
     arr = []
     curr = l.head
- 
+
     # Traverse the Linked List and add the
     # elements to the array one by one
     while (curr != None):
         arr.append(curr.data)
         curr = curr.next
-     
+
     # Print the created array
     return arr
 
@@ -60,7 +60,7 @@ class Problems:
             o.append(s)
             print(o.head)
 
-        
+
         return o
 
 

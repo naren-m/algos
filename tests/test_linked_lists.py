@@ -173,3 +173,14 @@ class TestLinkedList(unittest.TestCase):
             self.assertEqual(ll.peekBack(), i)
             ll.pop()
             print(ll)
+
+    def test_reverse(self):
+        n = 9
+        ll = self._createLL(n)
+        print(ll)
+        expected = list(range(0, n))
+        expected.reverse()
+
+        print(ll, expected)
+        ll.reverse()
+        self._checkEqual(ll, expected)
