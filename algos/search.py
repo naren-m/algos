@@ -7,6 +7,11 @@ def linear(A, k):
 
 
 def binary(arr, val):
+    # TODO: Implement Uniform Binary Search
+    # TODO: Implement Fibonaccian Search // Refare to Artof porgramming Chapter 6..2.1
+    def loopSearch(arr, val, l, r):
+        pass
+
     def search(arr, val, l, r):
         # Base case
         ## 1. Negative
@@ -28,6 +33,16 @@ def binary(arr, val):
 
     return search(arr, val, 0, len(arr)-1)
 
+# def fibonacci(arr, val):
+#     def getkthfib(k):
+#         return 1
+
+#     i = getkthfib(val)
+#     p = getkthfib(val-1)
+#     q = getkthfib(val-2)
+
+#     while q < p:
+
 
 _search_algos = [linear, binary]
 
@@ -44,7 +59,10 @@ tests = [{
 
 for _search_algo in _search_algos:
     for test in tests:
+        import time
+        start = time.time()
         got = _search_algo(*test['input'])
-        print('{}: Expected {}, got {}'.format(_search_algo.__name__,
-                                               test['expected'], got))
+        took = time.time() - start
+        print('{}: Expected {}, got {}. Time Took {} seconds'.format(_search_algo.__name__,
+                                               test['expected'], got, took))
         assert got == test['expected']
