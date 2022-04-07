@@ -24,7 +24,7 @@ def _convertArr(l):
     # Create an array of the
     # required length
     arr = []
-    curr = l.head
+    curr = l
 
     # Traverse the Linked List and add the
     # elements to the array one by one
@@ -63,6 +63,17 @@ class Problems:
 
         return o
 
+    def merge_lists(self, A, B):
+        if A is None: return B
+        if B is None: return A
+
+        if A.data <= B.data:
+            A.next = self.merge_lists(A.next, B)
+            return A
+
+        if B.data <= A.data:
+            B.next = self.merge_lists(A, B.next)
+            return B
 
 class TestProblems(unittest.TestCase):
     def test_find_min(self):
@@ -78,5 +89,17 @@ class TestProblems(unittest.TestCase):
         l2 = _createFromList([5,6,4])
         print(l1.head, l2.head)
         o = p.lc_add_two_numbers(l1, l2)
-        o = _convertArr(o)
+        o = _convertArr(o.head)
         self.assertEqual(o, [7,0,8])
+
+    def test_merge_lists(self):
+        p = Problems()
+
+        l1 = _createFromList([2,4,6,8])
+        l2 = _createFromList([1,3,5,7])
+
+        print(l1, l2)
+        o = p.merge_lists(l1.head, l2.head)
+        print(o)
+        o = _convertArr(o)
+        self.assertEqual(o, [1,2,3,4,5,6,7,8])
